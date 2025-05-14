@@ -10,7 +10,7 @@ const app = express();
 let items = ["Buy Food", "Prepare Food", "Cook Food", "Eat Food"];
 let workItems = ["Show Up"];
 let funItems = ["Watch TV", "Read a Book"];
-let finalExamItems = ["ICS 360", "MATH 241", "ENG 210", "HIST 151"]; // Add your UH courses here
+let finalExamItems = ["ICS 360", "ICS 200", "ICS 385", "BUS 320"];
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
