@@ -8,9 +8,12 @@ const app = express();
 
 // Arrays
 let items = ["Buy Food", "Prepare Food", "Cook Food", "Eat Food"];
-let workItems = ["Show Up"];
-let funItems = ["Watch TV", "Read a Book"];
-let finalExamItems = ["ICS 360", "ICS 200", "ICS 385", "BUS 320"];
+let finalExamItems = [
+  "ICS 360 Project",
+  "ICS 200 Website",
+  "ICS 385 Exam",
+  "BUS 320 Exam",
+];
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,28 +28,11 @@ app.get("/", function (req, res) {
 // Handle Adding Items
 app.post("/", function (req, res) {
   let item = req.body.newItem;
-  if (req.body.list === "Work") {
-    workItems.push(item);
-    res.redirect("/work");
-  } else if (req.body.list === "Fun") {
-    funItems.push(item);
-    res.redirect("/fun");
-  } else {
-    items.push(item);
-    res.redirect("/");
-  }
+  items.push(item);
+  res.redirect("/");
 });
 
-// Other Lists
-app.get("/work", function (req, res) {
-  res.render("list", { listTitle: "Work To Do List", newListItems: workItems });
-});
-
-app.get("/fun", function (req, res) {
-  res.render("list", { listTitle: "Fun To Do List", newListItems: funItems });
-});
-
-// New Finals Route
+// Finals List
 app.get("/finals", function (req, res) {
   res.render("list", {
     listTitle: "Final Exam To Do List",
